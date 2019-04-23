@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import Layout from './Layout/Layout';
+import Home from './Home'
+import AppBar from './Layout/AppBar/AppBar';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <Layout />
+      <div style={{height: '100vh'}}>
+        <Home />
+        <AppBar />
       </div>
     );
   }
