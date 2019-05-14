@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { createMuiTheme } from '@material-ui/core/styles'
 import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
+import MUIAppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button';
@@ -14,7 +14,7 @@ const theme = createMuiTheme({
             main: "#801313"
         },
         secondary: {
-            main: "#FF715B"
+            main: "#889998"
         }
     },
     typography: {
@@ -22,7 +22,7 @@ const theme = createMuiTheme({
     }
 })
 
-const styles = {
+const styles = theme => ({
     root: {
         flexGrow: 1,
     },
@@ -32,28 +32,66 @@ const styles = {
     menuButton: {
         marginLeft: -12,
         marginRight: 20,
+        [theme.breakpoints.up('md')]: {
+            display: 'none',
+        }
     },
-};
+    navButton: {
+        [theme.breakpoints.down('sm')]: {
+            display: 'none',
+        }
+    },
+});
 
-const appBar = (props) => {
-    const { classes } = props;
-    return (
-        <div className={classes.root}>
-            <AppBar position="static" color="secondary" >
-                <Toolbar>
-                    <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h5" color="inherit" align="center" className={classes.grow}>
-                        Henry MacAfee
-          </Typography>
-                    <Button color="inherit">Home</Button>
-                    <Button color="inherit">Resume</Button>
-                    <Button color="inherit">Portfolio</Button>
-                </Toolbar>
-            </AppBar>
-        </div >
-    );
+
+class AppBar extends Component {
+
+    state = {
+        scrolling: false
+    }
+
+    handleScroll = (event) => {
+        if (window.scrollY <= (Math.max(document.documentElement.clientHeight, window.innerHeight)) && this.state.scrolling === true) {
+            this.setState({ scrolling: false });
+        }
+        else if (window.scrollY >= (Math.max(document.documentElement.clientHeight, window.innerHeight)) && this.state.scrolling !== true) {
+            this.setState({ scrolling: true });
+        }
+    }
+
+    componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll)
+    }
+
+    render() {
+        const { classes } = this.props;
+        return (
+            <div className={classes.root}>
+                <MUIAppBar position="fixed" style={this.state.scrolling ? { backgroundColor: '#5e6969' } : { backgroundColor: '#000' }} >
+                    <Toolbar>
+                        <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+                            <MenuIcon onClick={this.props.drawerButtonClicked} />
+                        </IconButton>
+                        <Typography variant="h5" color="inherit" align="center" className={classes.grow}>
+
+                        </Typography>
+                        <Button className={classes.navButton} onClick={this.props.homeButtonClicked} color="inherit">Home</Button>
+                        <Button className={classes.navButton} color="inherit">Resume</Button>
+                        <Button className={classes.navButton} onClick={this.props.portButtonClicked} color="inherit">Portfolio</Button>
+                        <Button className={classes.navButton} color="inherit">GitHub</Button>
+                        <Button className={classes.navButton} color="inherit">LinkedIn</Button>
+                        <Button className={classes.navButton} color="inherit">Contact Me</Button>
+                    </Toolbar>
+                </MUIAppBar>
+            </div >
+        );
+    }
+
+
 }
 
-export default withStyles(styles)(appBar);
+export default withStyles(styles)(AppBar);

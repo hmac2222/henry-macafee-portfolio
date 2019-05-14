@@ -1,20 +1,33 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import moduleStyles from './Home.module.css'
+import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+
+const styles = {
+    button: {
+        background: 'linear-gradient(90deg, rgba(94,105,105,1) 0%, rgba(137,153,136,1) 100%)',
+        color: 'white',
+        border: 0,
+        '&:hover': {
+            background: 'linear-gradient(90deg, rgba(109,121,121,1) 0%, rgba(160,179,159,1) 100%) ',
+            border: 0
+        }
+    }
+}
 
 
 
 const home = (props) => {
-    const { classes } = props;
+    const { classes, children, className, ...other } = props;
     return (
-        <div style={{
-            height: '100vh',
-            display: 'block',
-            backgroundColor: 'black'
-        }}>
+        <div className={moduleStyles.Container}>
             <Typography variant="h2" style={{ color: 'white', textAlign: 'center', paddingTop: '40vh' }}>Hi, my name is <strong>Henry MacAfee</strong>.</Typography>
-            <Typography variant="h4" style={{ color: 'white', textAlign: 'center', paddingTop: '10vh' }}>I like to make stuff.</Typography>
-        </div>
+            <Typography variant="h4" style={{ color: 'white', textAlign: 'center', paddingTop: '4vh' }}>I like to make <span className={moduleStyles.Elegant}>elegant</span>, <code>functional</code> stuff.</Typography>
+            <div style={{ textAlign: 'center', marginTop: '30px' }}><Button className={classes.button} onClick={props.portButtonClicked} variant="outlined" color="secondary"  >SEE FOR YOURSELF</Button></div>
+        </div >
     )
 }
 
-export default home
+export default withStyles(styles)(home)
