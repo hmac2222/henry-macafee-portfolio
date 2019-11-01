@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
 import classes from './Portfolio.module.css';
 import AppBar from './Layout/AppBar/AppBar';
 import Card from '@material-ui/core/Card';
-import pastvibe from './assets/pastvibe.svg'
-import pastvibeScreenshot from './assets/pastvibe-screenshot.png'
+import pastvibeLogo from './assets/pastvibe-logo.png'
+import pastvibeCover from './assets/pastvibe-cover.png'
 import Drawer from '@material-ui/core/Drawer'
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
@@ -17,6 +18,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
 
 
 
@@ -75,12 +77,13 @@ class Portfolio extends Component {
                 </Drawer>
                 <div style={{ textAlign: 'center' }}>
                     <Card className={classes.Card} elevation={2} >
-                        <div><img width="200px" src={pastvibe} /></div>
-                        <div ><img style={{ border: '1px solid black', dropShadow: '1 1 1' }} width="300px" src={pastvibeScreenshot} /></div>
+                    <div ><img style={{ border: '1px solid black', dropShadow: '1 1 1' }} width="100%" src={pastvibeCover} /></div>
+                    <div><img className={`${classes.projectlogo}`, `${classes.grow}`} style={{border: '3px solid #ccc', borderRadius: '120px', marginRight: '220px', marginTop: '-60px'}} src={pastvibeLogo} /></div>
+                        <div><Typography variant="p" style={{ color: 'black', textAlign: 'center', padding: '20px' }}><strong>Pastvibe</strong> is a tool that leverages the Last.fm public API to display the songs you've listened to on this day each year going back in time.</Typography></div>
 
                     </Card>
-                    <Card className={classes.Card} elevation={2} >Blues Barbershop</Card>
-                    <Card className={classes.Card} elevation={2} >Project 3</Card>
+                    <Card className={classes.Card} elevation={2} ><Typography variant="h5" style={{ color: 'black', textAlign: 'center', padding: '20px' }}>Blues Barbershop</Typography></Card>
+                    <Card className={classes.Card} elevation={2} ><Typography variant="h5" style={{ color: 'black', textAlign: 'center', padding: '20px' }}>Code for this Website</Typography></Card>
                 </div>
             </div >
         );
@@ -88,4 +91,4 @@ class Portfolio extends Component {
 
 }
 
-export default Portfolio
+export default CSSModules(Portfolio, classes);
