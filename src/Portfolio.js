@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import classes from './Portfolio.module.css';
-import cx from 'classnames';
 import AppBar from './Layout/AppBar/AppBar';
 import ProjectCard from './projectCard'
 import Drawer from '@material-ui/core/Drawer'
@@ -21,8 +20,13 @@ import gatsbyLogo from './assets/techs/gatsby.svg'
 import cssModulesLogo from './assets/techs/css-modules.svg';
 import materialUiLogo from './assets/techs/material-ui.svg';
 import sassLogo from './assets/techs/sass.svg';
-import pastvibeLogo from './assets/pastvibe-logo.png'
-import pastvibeCover from './assets/pastvibe-cover.png'
+import pastvibeLogo from './assets/pastvibe-logo.png';
+import pastvibeCover from './assets/pastvibe-cover.png';
+import wedigCover from './assets/wedig-cover.png';
+import wedigLogo from './assets/wedig-logo.png';
+import portfolioCover from './assets/portfolio-cover.png';
+import portfolioLogo from './assets/portfolio-logo.png';
+import { Typography } from '@material-ui/core';
 
 
 
@@ -35,6 +39,7 @@ class Portfolio extends Component {
     projects = [{
         title: 'Pastvibe',
         url: 'https://pastvibe.netlify.com',
+        codeLink: 'https://github.com/hmac2222/pastvibe',
         cover: pastvibeCover,
         logo: pastvibeLogo,
         description: " is a tool that leverages the Last.fm public API to display the songs you've listened to on this day each year going back in time.",
@@ -44,16 +49,18 @@ class Portfolio extends Component {
     {
         title: 'Wedig Studios',
         url: 'https://wedigstudios.netlify.com',
-        cover: "wedigCover",
-        logo: "wedigLogo",
+        codeLink: 'https://github.com/hmac2222/wedig-studios',
+        cover: wedigCover,
+        logo: wedigLogo,
         description: " is the premier tracking studio in West Nashville",
         techs: [{name: "Gatsby", logo: gatsbyLogo, url: "https://www.gatsbyjs.org/"}]
     },
     {
         title: 'Code for this Website',
-        url: '/#',
-        cover: "portfolioCover",
-        logo: "portfolioLogo",
+        url: 'https://github.com/hmac2222/henry-macafee-portfolio',
+        codeLink: 'https://github.com/hmac2222/henry-macafee-portfolio',
+        cover: portfolioCover,
+        logo: portfolioLogo,
         description: "",
         techs: [{name: "React", logo: reactLogo, url: "https://reactjs.org/"}, {name: "CSS Modules", logo: cssModulesLogo, url: "https://github.com/css-modules/css-modules"}, {name: "Material UI", logo: materialUiLogo, url: "https://material-ui.com/"}]
     }]
@@ -70,31 +77,27 @@ class Portfolio extends Component {
         const sideList = (
             <div className={classes.list}>
                 <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
+                    {[{text: 'Home', action: this.props.homeButtonClicked, url: "#"}, {text: 'Portfolio', action: this.props.portButtonClicked, url: "#"}, {text: 'Resume', action: this.props.resButtonClicked, url: "#"}].map((item, index) => (
+                        <ListItem button key={item.text} onClick={item.action} href={item.url}>
+                            <ListItemText primary={item.text} />
                         </ListItem>
                     ))}
-                </List>
-                <Divider />
-                <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
+                    {[{text: 'Github', url:"https://github.com/hmac2222"}, {text: 'LinkedIn', url: "https://www.linkedin.com/in/henry-macafee-42887743/"}, {text: 'Contact Me', url: "mailto:henry.macafee@gmail.com"}].map((item, index) => (
+                    <a href={item.url} style={{textDecoration: 'none', color: 'black'}}><ListItem button key={item.text}>
+                    <ListItemText primary={item.text} />
+                </ListItem></a>
                     ))}
                 </List>
             </div>
         );
 
         return (
-            <div style={{ height: '100vh', display: 'block' }}>
+            <div style={{display: 'block' }}>
                 <AppBar 
                 drawerButtonClicked={this.drawerShow} 
                 homeButtonClicked={this.props.homeButtonClicked}
-                portButtonClicked={this.props.portButtonClicked} />
+                portButtonClicked={this.props.portButtonClicked}
+                resButtonClicked={this.props.resButtonClicked} />
                 <Drawer open={this.state.drawer} onClose={this.drawerHide}>
                     <div
                         tabIndex={0}
@@ -105,10 +108,10 @@ class Portfolio extends Component {
                         {sideList}
                     </div>
                 </Drawer>
-                <div style={{ textAlign: 'center' }}>
-                    
+                
+                <div className={classes['project-container']} style={{ textAlign: 'center'}}>
                     {this.projects.map(project => {
-                       return <ProjectCard title={project.title} url={project.url} cover={project.cover} logo={project.logo} description={project.description} techs={project.techs} />
+                       return <ProjectCard title={project.title} url={project.url} codeLink={project.codeLink} cover={project.cover} logo={project.logo} description={project.description} techs={project.techs} />
                     })} 
                 </div>
             </div >
