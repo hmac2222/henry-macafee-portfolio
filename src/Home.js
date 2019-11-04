@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import moduleStyles from './Home.module.css'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography';
@@ -23,8 +22,8 @@ const home = (props) => {
     const { classes, children, className, ...other } = props;
     return (
         <div className={moduleStyles.Container}>
-            <Typography variant="h2" style={{ color: 'white', textAlign: 'center', paddingTop: '40vh' }}>Hi, my name is <strong>Henry MacAfee</strong>.</Typography>
-            <Typography variant="h4" style={{ color: 'white', textAlign: 'center', paddingTop: '4vh' }}>I like to make <span className={moduleStyles.Elegant}>elegant</span>, <code>functional</code> stuff.</Typography>
+            <Typography className={classes.hello}variant="h2" style={{ color: 'white', textAlign: 'center', paddingTop: '40vh' }}>Hi, my name is <strong>Henry MacAfee</strong>.</Typography>
+            <Typography className={classes['i-like']} variant="h4" style={{ color: 'white', textAlign: 'center', paddingTop: '4vh' }}>I like to make <span className={moduleStyles.Elegant}>elegant</span>, <code>functional</code> stuff.</Typography>
             <div style={{ textAlign: 'center', marginTop: '30px' }}><Button className={classes.button} onClick={props.portButtonClicked} variant="outlined" color="secondary"  >SEE FOR YOURSELF</Button></div>
         </div >
     )

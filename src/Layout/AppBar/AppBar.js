@@ -80,11 +80,11 @@ class AppBar extends Component {
 
                         </Typography>
                         <Button className={classes.navButton} onClick={this.props.homeButtonClicked} color="inherit">Home</Button>
-                        <Button className={classes.navButton} color="inherit">Resume</Button>
                         <Button className={classes.navButton} onClick={this.props.portButtonClicked} color="inherit">Portfolio</Button>
+                        <Button className={classes.navButton} onClick={this.props.resButtonClicked} color="inherit">Resume</Button>
                         <Button className={classes.navButton} href="https://github.com/hmac2222" color="inherit">GitHub</Button>
                         <Button className={classes.navButton} href="https://www.linkedin.com/in/henry-macafee-42887743/" color="inherit">LinkedIn</Button>
-                        <Button className={classes.navButton} color="inherit">Contact Me</Button>
+                        <Button className={classes.navButton} href="mailto:henry.macafee@gmail.com" color="inherit">Contact Me</Button>
                     </Toolbar>
                 </MUIAppBar>
             </div >

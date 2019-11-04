@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import CSSModules from 'react-css-modules';
 import classes from './Portfolio.module.css';
 import AppBar from './Layout/AppBar/AppBar';
-import Card from '@material-ui/core/Card';
-import pastvibeLogo from './assets/pastvibe-logo.png'
-import pastvibeCover from './assets/pastvibe-cover.png'
+import ProjectCard from './projectCard'
 import Drawer from '@material-ui/core/Drawer'
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
@@ -18,7 +15,18 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
+import reactLogo from './assets/techs/react.svg';
+import gatsbyLogo from './assets/techs/gatsby.svg'
+import cssModulesLogo from './assets/techs/css-modules.svg';
+import materialUiLogo from './assets/techs/material-ui.svg';
+import sassLogo from './assets/techs/sass.svg';
+import pastvibeLogo from './assets/pastvibe-logo.png';
+import pastvibeCover from './assets/pastvibe-cover.png';
+import wedigCover from './assets/wedig-cover.png';
+import wedigLogo from './assets/wedig-logo.png';
+import portfolioCover from './assets/portfolio-cover.png';
+import portfolioLogo from './assets/portfolio-logo.png';
+import { Typography } from '@material-ui/core';
 
 
 
@@ -27,6 +35,35 @@ class Portfolio extends Component {
     state = {
         drawer: false
     }
+
+    projects = [{
+        title: 'Pastvibe',
+        url: 'https://pastvibe.netlify.com',
+        codeLink: 'https://github.com/hmac2222/pastvibe',
+        cover: pastvibeCover,
+        logo: pastvibeLogo,
+        description: " is a tool that leverages the Last.fm public API to display the songs you've listened to on this day each year going back in time.",
+        techs: [{name: "React", logo: reactLogo, url: "https://reactjs.org"},
+             {name: "Sass", logo: sassLogo, url: "https://sass-lang.com/"}]
+    },
+    {
+        title: 'Wedig Studios',
+        url: 'https://wedigstudios.netlify.com',
+        codeLink: 'https://github.com/hmac2222/wedig-studios',
+        cover: wedigCover,
+        logo: wedigLogo,
+        description: " is the premier tracking studio in West Nashville",
+        techs: [{name: "Gatsby", logo: gatsbyLogo, url: "https://www.gatsbyjs.org/"}]
+    },
+    {
+        title: 'Code for this Website',
+        url: 'https://github.com/hmac2222/henry-macafee-portfolio',
+        codeLink: 'https://github.com/hmac2222/henry-macafee-portfolio',
+        cover: portfolioCover,
+        logo: portfolioLogo,
+        description: "",
+        techs: [{name: "React", logo: reactLogo, url: "https://reactjs.org/"}, {name: "CSS Modules", logo: cssModulesLogo, url: "https://github.com/css-modules/css-modules"}, {name: "Material UI", logo: materialUiLogo, url: "https://material-ui.com/"}]
+    }]
 
     drawerShow = () => {
         this.setState({ drawer: true })
@@ -40,31 +77,27 @@ class Portfolio extends Component {
         const sideList = (
             <div className={classes.list}>
                 <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
+                    {[{text: 'Home', action: this.props.homeButtonClicked, url: "#"}, {text: 'Portfolio', action: this.props.portButtonClicked, url: "#"}, {text: 'Resume', action: this.props.resButtonClicked, url: "#"}].map((item, index) => (
+                        <ListItem button key={item.text} onClick={item.action} href={item.url}>
+                            <ListItemText primary={item.text} />
                         </ListItem>
                     ))}
-                </List>
-                <Divider />
-                <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
+                    {[{text: 'Github', url:"https://github.com/hmac2222"}, {text: 'LinkedIn', url: "https://www.linkedin.com/in/henry-macafee-42887743/"}, {text: 'Contact Me', url: "mailto:henry.macafee@gmail.com"}].map((item, index) => (
+                    <a href={item.url} style={{textDecoration: 'none', color: 'black'}}><ListItem button key={item.text}>
+                    <ListItemText primary={item.text} />
+                </ListItem></a>
                     ))}
                 </List>
             </div>
         );
 
         return (
-            <div style={{ height: '100vh', display: 'block' }}>
+            <div style={{display: 'block' }}>
                 <AppBar 
                 drawerButtonClicked={this.drawerShow} 
                 homeButtonClicked={this.props.homeButtonClicked}
-                portButtonClicked={this.props.portButtonClicked} />
+                portButtonClicked={this.props.portButtonClicked}
+                resButtonClicked={this.props.resButtonClicked} />
                 <Drawer open={this.state.drawer} onClose={this.drawerHide}>
                     <div
                         tabIndex={0}
@@ -75,15 +108,11 @@ class Portfolio extends Component {
                         {sideList}
                     </div>
                 </Drawer>
-                <div style={{ textAlign: 'center' }}>
-                    <Card className={classes.Card} elevation={2} >
-                    <div ><img style={{ border: '1px solid black', dropShadow: '1 1 1' }} width="100%" src={pastvibeCover} /></div>
-                    <div><img className={`${classes.projectlogo}`, `${classes.grow}`} style={{border: '3px solid #ccc', borderRadius: '120px', marginRight: '220px', marginTop: '-60px'}} src={pastvibeLogo} /></div>
-                        <div><Typography variant="p" style={{ color: 'black', textAlign: 'center', padding: '20px' }}><strong>Pastvibe</strong> is a tool that leverages the Last.fm public API to display the songs you've listened to on this day each year going back in time.</Typography></div>
-
-                    </Card>
-                    <Card className={classes.Card} elevation={2} ><Typography variant="h5" style={{ color: 'black', textAlign: 'center', padding: '20px' }}>Blues Barbershop</Typography></Card>
-                    <Card className={classes.Card} elevation={2} ><Typography variant="h5" style={{ color: 'black', textAlign: 'center', padding: '20px' }}>Code for this Website</Typography></Card>
+                
+                <div className={classes['project-container']} style={{ textAlign: 'center'}}>
+                    {this.projects.map(project => {
+                       return <ProjectCard title={project.title} url={project.url} codeLink={project.codeLink} cover={project.cover} logo={project.logo} description={project.description} techs={project.techs} />
+                    })} 
                 </div>
             </div >
         );
@@ -91,4 +120,4 @@ class Portfolio extends Component {
 
 }
 
-export default CSSModules(Portfolio, classes);
+export default Portfolio;

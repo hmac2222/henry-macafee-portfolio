@@ -1,18 +1,13 @@
-.Card {
-    display: inline-block;
-    width: 375px;
-    height: 400px;
-    margin: 80px 40px 0px 0px;
+.project-container {
+    height: 70vh;
+    min-height: 520px;
+    background: #DEE5E5;
+    border-bottom: 1px solid #ccc;
 }
 
-.projectlogo {
-    width: 100px;
-}
+@media only screen and (max-width: 1270px) { 
+    .project-container {
+        height: auto;
+    }
 
-.grow {
-    transition: all .2s ease-in-out
 }
-
-.projectlogo:hover {
-    transform: scale(1.1);
-  }
