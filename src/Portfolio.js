@@ -52,16 +52,16 @@ class Portfolio extends Component {
         codeLink: 'https://github.com/hmac2222/wedig-studios',
         cover: wedigCover,
         logo: wedigLogo,
-        description: " is the premier tracking studio in West Nashville",
+        description: " is the premier tracking studio located in West Nashville",
         techs: [{name: "Gatsby", logo: gatsbyLogo, url: "https://www.gatsbyjs.org/"}]
     },
     {
-        title: 'Code for this Website',
+        title: 'This Website',
         url: 'https://github.com/hmac2222/henry-macafee-portfolio',
         codeLink: 'https://github.com/hmac2222/henry-macafee-portfolio',
         cover: portfolioCover,
         logo: portfolioLogo,
-        description: "",
+        description: " was built with React, Material-UI, uses CSS Modules, and is deployed automatically by Netlify.",
         techs: [{name: "React", logo: reactLogo, url: "https://reactjs.org/"}, {name: "CSS Modules", logo: cssModulesLogo, url: "https://github.com/css-modules/css-modules"}, {name: "Material UI", logo: materialUiLogo, url: "https://material-ui.com/"}]
     }]
 
