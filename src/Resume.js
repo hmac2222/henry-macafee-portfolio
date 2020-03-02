@@ -15,7 +15,7 @@ class Resume extends Component  {
                   beforeInjection={svg => {
                 svg.classList.add(classes['henry-resume'])
     svg.setAttribute('style', 'font-family: Oswald')
-  }}/><div className={classes.overlay}><img className={classes['download-icon']} src={downloadIcon}></img></div></a>
+  }}/><div className={classes.overlay}><img alt="download" className={classes['download-icon']} src={downloadIcon}></img></div></a>
 
       </div>
         )

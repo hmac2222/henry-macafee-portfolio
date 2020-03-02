@@ -3,18 +3,9 @@ import classes from './Portfolio.module.css';
 import AppBar from './Layout/AppBar/AppBar';
 import ProjectCard from './projectCard'
 import Drawer from '@material-ui/core/Drawer'
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import reactLogo from './assets/techs/react.svg';
 import gatsbyLogo from './assets/techs/gatsby.svg'
 import cssModulesLogo from './assets/techs/css-modules.svg';
@@ -26,7 +17,6 @@ import wedigCover from './assets/wedig-cover.png';
 import wedigLogo from './assets/wedig-logo.png';
 import portfolioCover from './assets/portfolio-cover.png';
 import portfolioLogo from './assets/portfolio-logo.png';
-import { Typography } from '@material-ui/core';
 
 
 

@@ -19,7 +19,7 @@ const styles = {
 
 
 const home = (props) => {
-    const { classes, children, className, ...other } = props;
+    const { classes } = props;
     return (
         <div className={moduleStyles.Container}>
             <Typography className={classes.hello}variant="h2" style={{ color: 'white', textAlign: 'center', paddingTop: '40vh' }}>Hi, my name is <strong>Henry MacAfee</strong>.</Typography>
