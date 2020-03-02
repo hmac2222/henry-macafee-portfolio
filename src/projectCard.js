@@ -12,12 +12,12 @@ const projectCard = (props) => {
     return(
             <Card className={classes.Card} elevation={2} >
                 <div>
-                        <a href={props.url}><img style={{ border: '1px solid black', dropShadow: '1 1 1' }} width="100%" src={props.cover} /></a>
+                        <a href={props.url}><img alt="cover" style={{ border: '1px solid black', dropShadow: '1 1 1' }} width="100%" src={props.cover} /></a>
                 </div>
                 <div>
-                    <a href={props.url}><img className={ cx(classes['project-logo'], classes.grow)} src={props.logo} /></a>
+                    <a href={props.url}><img alt="logo" className={ cx(classes['project-logo'], classes.grow)} src={props.logo} /></a>
                 </div>
-                <div className={ cx(classes['code-link'], classes.grow)}><a href={props.codeLink}><img src={codeIcon}></img></a></div>
+                <div className={ cx(classes['code-link'], classes.grow)}><a href={props.codeLink}><img alt="codeIcon" src={codeIcon}></img></a></div>
                 <div className={classes['description-text']}>
                         <Typography variant="p" style={{ color: 'black' }}><a href={props.url} style={{color: 'black'}}><strong>{props.title}</strong></a>{props.description}</Typography>
                 </div>
