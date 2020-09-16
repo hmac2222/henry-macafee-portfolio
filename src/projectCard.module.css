@@ -19,14 +19,14 @@
     left: 24px;
     width: 80px;
     border-radius: 50px;
-    opacity: 93%;
+    opacity: .93;
     transition: .5s all;
 }
 
 .project-logo:hover {
     /* box-shadow: 0 0 0 3px rgba(255, 255, 255, .85); */
     border-radius: 50px;
-    opacity: 100%;
+    opacity: 1;
     transition: .5s all;
   }
 
