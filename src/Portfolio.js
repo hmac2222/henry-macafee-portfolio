@@ -32,7 +32,7 @@ class Portfolio extends Component {
         codeLink: 'https://github.com/hmac2222/pastvibe',
         cover: pastvibeCover,
         logo: pastvibeLogo,
-        description: " is a tool that leverages the Last.fm public API to display the songs you've listened to on this day each year going back in time.",
+        description: " is a tool that leverages the Last.fm public API to display the songs you've listened to on this day each year going back in time. If you don't have a Last.fm account, feel free to use my username, h_mac",
         techs: [{name: "React", logo: reactLogo, url: "https://reactjs.org"},
              {name: "Sass", logo: sassLogo, url: "https://sass-lang.com/"}]
     },
@@ -52,7 +52,9 @@ class Portfolio extends Component {
         cover: portfolioCover,
         logo: portfolioLogo,
         description: " was built with React, Material-UI, uses CSS Modules, and is deployed automatically by Netlify.",
-        techs: [{name: "React", logo: reactLogo, url: "https://reactjs.org/"}, {name: "CSS Modules", logo: cssModulesLogo, url: "https://github.com/css-modules/css-modules"}, {name: "Material UI", logo: materialUiLogo, url: "https://material-ui.com/"}]
+        techs: [{name: "React", logo: reactLogo, url: "https://reactjs.org/"}, 
+                {name: "CSS Modules", logo: cssModulesLogo, url: "https://github.com/css-modules/css-modules"}, 
+                {name: "Material UI", logo: materialUiLogo, url: "https://material-ui.com/"}]
     }]
 
     drawerShow = () => {
@@ -67,12 +69,16 @@ class Portfolio extends Component {
         const sideList = (
             <div className={classes.list}>
                 <List>
-                    {[{text: 'Home', action: this.props.homeButtonClicked, url: "#"}, {text: 'Portfolio', action: this.props.portButtonClicked, url: "#"}, {text: 'Resume', action: this.props.resButtonClicked, url: "#"}].map((item, index) => (
+                    {[{text: 'Home', action: this.props.homeButtonClicked, url: "#"}, 
+                      {text: 'Portfolio', action: this.props.portButtonClicked, url: "#"}, 
+                      {text: 'Resume', action: this.props.resButtonClicked, url: "#"}].map((item, index) => (
                         <ListItem button key={item.text} onClick={item.action} href={item.url}>
                             <ListItemText primary={item.text} />
                         </ListItem>
                     ))}
-                    {[{text: 'Github', url:"https://github.com/hmac2222"}, {text: 'LinkedIn', url: "https://www.linkedin.com/in/henry-macafee-42887743/"}, {text: 'Contact Me', url: "mailto:henry.macafee@gmail.com"}].map((item, index) => (
+                    {[{text: 'Github', url:"https://github.com/hmac2222"}, 
+                      {text: 'LinkedIn', url: "https://www.linkedin.com/in/henry-macafee-42887743/"}, 
+                      {text: 'Contact Me', url: "mailto:henry.macafee@gmail.com"}].map((item, index) => (
                     <a href={item.url} style={{textDecoration: 'none', color: 'black'}}><ListItem button key={item.text}>
                     <ListItemText primary={item.text} />
                 </ListItem></a>
@@ -101,7 +107,14 @@ class Portfolio extends Component {
                 
                 <div className={classes['project-container']} style={{ textAlign: 'center'}}>
                     {this.projects.map(project => {
-                       return <ProjectCard title={project.title} url={project.url} codeLink={project.codeLink} cover={project.cover} logo={project.logo} description={project.description} techs={project.techs} />
+                       return <ProjectCard 
+                                title={project.title} 
+                                url={project.url} 
+                                codeLink={project.codeLink} 
+                                cover={project.cover} 
+                                logo={project.logo} 
+                                description={project.description} 
+                                techs={project.techs} />
                     })} 
                 </div>
             </div >

@@ -12,7 +12,7 @@ const projectCard = (props) => {
     return(
             <Card className={classes.Card} elevation={2} >
                 <div>
-                        <a href={props.url}><img alt="cover" style={{ border: '1px solid black', dropShadow: '1 1 1' }} width="100%" src={props.cover} /></a>
+                        <a href={props.url}><img alt="cover" width="100%" src={props.cover} /></a>
                 </div>
                 <div>
                     <a href={props.url}><img alt="logo" className={ cx(classes['project-logo'], classes.grow)} src={props.logo} /></a>

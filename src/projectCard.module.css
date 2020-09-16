@@ -4,7 +4,14 @@
     width: 375px;
     height: 400px;
     margin: 80px 40px 0px 0px;
+    /* opacity: 85%;
+    transition: all 1s; */
 }
+/* 
+.Card:hover {
+    opacity: 100%;
+    transition: all 1s;
+} */
 
 .project-logo {
     position: absolute;
@@ -12,13 +19,15 @@
     left: 24px;
     width: 80px;
     border-radius: 50px;
-    border: 1.5px solid #333;
+    opacity: 93%;
+    transition: .5s all;
 }
 
 .project-logo:hover {
-    border: 4px solid #D4E4BC;
+    /* box-shadow: 0 0 0 3px rgba(255, 255, 255, .85); */
     border-radius: 50px;
-    margin: -2.5px;
+    opacity: 100%;
+    transition: .5s all;
   }
 
 .code-link {
@@ -27,7 +36,7 @@
     right: 24px;
     background: #fff;
     padding: 4px;
-    border: 1px solid #222;
+    border: 1px solid rgba(0,0,0,0);
     border-radius: 50px;
     width: 28px;
     height: 28px;
@@ -39,7 +48,7 @@
 }
 
 .code-link:hover {
-    border: 3px solid #D4E4BC;
+    border: 3px solid #889998;
     margin: -2px;
 }
 
@@ -99,14 +108,14 @@
         top: 37px;
         left: 18px;
         width: 53px;
-        border: 2px solid #D4E4BC;
+        /* border: 2px solid #D4E4BC; */
         border-radius: 50px;
     }
 
-    .project-logo:hover {
+    /* .project-logo:hover {
         border: 3px solid #D4E4BC;
         margin: -1px;
-    }
+    } */
 
     .code-link {
         position: absolute;

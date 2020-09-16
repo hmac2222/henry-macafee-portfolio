@@ -3,6 +3,7 @@
     min-height: 520px;
     background: #DEE5E5;
     border-bottom: 1px solid #ccc;
+    cursor: default;
 }
 
 @media only screen and (max-width: 1270px) { 
